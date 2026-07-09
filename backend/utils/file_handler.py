@@ -4,7 +4,6 @@ Handles file uploads, validation, and storage
 """
 
 import os
-import magic
 from werkzeug.utils import secure_filename
 from flask import current_app
 from utils.logger import app_logger

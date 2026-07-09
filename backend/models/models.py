@@ -64,7 +64,7 @@ class Resume(db.Model):
     filename = db.Column(db.String(255), nullable=False)
     file_path = db.Column(db.String(512), nullable=False)
     file_type = db.Column(db.String(10), nullable=False)  # pdf, docx, etc.
-    raw_text = db.Column(db.LongText, nullable=True)
+    raw_text = db.Column(db.Text, nullable=True)
     
     # Extracted Information
     skills = db.Column(db.JSON, nullable=True)  # List of skills
@@ -91,7 +91,7 @@ class JobDescription(db.Model):
     recruiter_id = db.Column(db.Integer, db.ForeignKey('recruiters.id'), nullable=False, index=True)
     title = db.Column(db.String(255), nullable=False)
     company = db.Column(db.String(255), nullable=False)
-    description = db.Column(db.LongText, nullable=False)
+    description = db.Column(db.Text, nullable=False)
     
     # Extracted Information
     required_skills = db.Column(db.JSON, nullable=True)  # List of required skills

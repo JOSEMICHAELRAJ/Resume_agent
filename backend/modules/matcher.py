@@ -4,7 +4,7 @@ Semantic similarity matching between resumes and job descriptions
 """
 
 import numpy as np
-from sentence_transformers import SentenceTransformer
+# from sentence_transformers import SentenceTransformer  # Lazy load to avoid slow startup
 from sklearn.metrics.pairwise import cosine_similarity
 from utils.logger import app_logger
 
@@ -23,11 +23,24 @@ class SemanticMatcher:
             model_name: Name of the sentence transformer model
         """
         try:
-            self.model = SentenceTransformer(model_name)
+            # Lazy load the model on first use to avoid slow startup
+            self.model = None
             self.model_name = model_name
-            app_logger.info(f"Initialized SemanticMatcher with model: {model_name}")
+            app_logger.info(f"SemanticMatcher initialized (model will load on first use: {model_name})")
         except Exception as e:
             app_logger.error(f"Error initializing SemanticMatcher: {str(e)}")
+            self.model = None
+    
+    def _load_model(self):
+        """Lazy load the SentenceTransformer model"""
+        if self.model is None:
+            try:
+                from sentence_transformers import SentenceTransformer
+                self.model = SentenceTransformer(self.model_name)
+                app_logger.info(f"Loaded SentenceTransformer model: {self.model_name}")
+            except Exception as e:
+                app_logger.error(f"Error loading SentenceTransformer: {str(e)}")
+                raise
             raise
     
     def generate_embedding(self, text):
