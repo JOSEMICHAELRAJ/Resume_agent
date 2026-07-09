@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Python
 __pycache__/
 *.py[cod]
@@ -88,3 +89,95 @@ uploads/
 
 # CI/CD
 .github/secrets/
+=======
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Flask
+instance/
+.webassets-cache
+*.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+.env.local
+.env.*.local
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log*
+lerna-debug.log*
+
+# React
+/frontend/build/
+/frontend/dist/
+.cache/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+.env.*.secret
+
+# Logs
+logs/
+*.log
+
+# Database
+*.sqlite
+*.sqlite3
+resize.db
+
+# Resumes
+resumes/
+uploads/
+
+# IDE settings
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.DS_Store
+
+# CI/CD
+.github/secrets/
+>>>>>>> 279d581c598bb782b6b22e7e1e3ab44043e32b29
