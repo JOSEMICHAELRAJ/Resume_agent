@@ -15,7 +15,7 @@ const JobList = () => {
   const loadJobs = async () => {
     try {
       setLoading(true);
-      const response = await jobAPI.getRecruiterJobs(1);
+      const response = await jobAPI.list(1, 20);
       setJobs(response.data.jobs);
     } catch (error) {
       console.error('Error loading jobs:', error);

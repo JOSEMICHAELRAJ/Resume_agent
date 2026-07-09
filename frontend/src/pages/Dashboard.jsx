@@ -33,7 +33,7 @@ const Dashboard = () => {
       const candidatesRes = await candidateAPI.list(1, 5);
       
       // Load jobs
-      const jobsRes = await jobAPI.getRecruiterJobs(1, 1, 5);
+      const jobsRes = await jobAPI.list(1, 5);
       
       setStats({
         totalCandidates: candidatesRes.data.total || 0,
@@ -130,13 +130,13 @@ const Dashboard = () => {
           </Link>
 
           <Link
-            to="/create-job"
+            to="/matching"
             className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer group"
           >
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="font-semibold text-gray-900">Create Job</h3>
-                <p className="text-sm text-gray-500 mt-1">Post a new job description</p>
+                <h3 className="font-semibold text-gray-900">Find Suitable Jobs</h3>
+                <p className="text-sm text-gray-500 mt-1">Match resumes to jobs by skills</p>
               </div>
               <ArrowRight
                 size={24}

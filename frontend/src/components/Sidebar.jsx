@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 import {
   Home,
   Upload,
-  Briefcase,
   Users,
   BarChart3,
   FileText,
@@ -16,10 +15,9 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
   const menuItems = [
     { path: '/', icon: Home, label: 'Dashboard' },
     { path: '/upload-resumes', icon: Upload, label: 'Upload Resumes' },
-    { path: '/create-job', icon: Briefcase, label: 'Create Job' },
     { path: '/candidates', icon: Users, label: 'Candidates' },
     { path: '/jobs', icon: FileText, label: 'Jobs' },
-    { path: '/matching', icon: BarChart3, label: 'Matching' },
+    { path: '/matching', icon: BarChart3, label: 'Suitable Jobs' },
   ];
 
   const isActive = (path) => location.pathname === path;

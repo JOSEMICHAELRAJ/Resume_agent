@@ -78,9 +78,18 @@ class DatabaseManager:
             Candidate object
         """
         try:
+            normalized_email = email.strip() if isinstance(email, str) else email
+            if not normalized_email:
+                normalized_email = None
+
+            if normalized_email:
+                existing_candidate = Candidate.query.filter_by(email=normalized_email).first()
+                if existing_candidate:
+                    return existing_candidate
+
             candidate = Candidate(
                 full_name=full_name,
-                email=email,
+                email=normalized_email,
                 phone=phone,
                 location=location
             )

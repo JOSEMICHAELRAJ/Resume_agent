@@ -50,6 +50,18 @@ export const resumeAPI = {
 export const jobAPI = {
   create: (jobData) => api.post('/job/create', jobData),
   getJob: (jobId) => api.get(`/job/${jobId}`),
+  list: (page = 1, perPage = 20) =>
+    api.get('/job/', {
+      params: { page, per_page: perPage },
+    }),
+  getSuitableJobs: ({ candidateId, resumeId, keyword } = {}) =>
+    api.get('/job/suitable', {
+      params: {
+        candidate_id: candidateId,
+        resume_id: resumeId,
+        keyword,
+      },
+    }),
   getRecruiterJobs: (recruiterId, page = 1, perPage = 10) =>
     api.get(`/job/recruiter/${recruiterId}`, {
       params: { page, per_page: perPage },
@@ -83,6 +95,14 @@ export const matchingAPI = {
   getJobRankings: (jobId, page = 1, perPage = 20) =>
     api.get(`/matching/ranking/${jobId}`, {
       params: { page, per_page: perPage },
+    }),
+  getSuitableJobs: ({ candidateId, resumeId, keyword } = {}) =>
+    api.get('/job/suitable', {
+      params: {
+        candidate_id: candidateId,
+        resume_id: resumeId,
+        keyword,
+      },
     }),
   getRankingDetails: (rankingId) => api.get(`/matching/ranking/${rankingId}`),
   updateRecommendation: (rankingId, recommendation) =>

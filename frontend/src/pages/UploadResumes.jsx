@@ -54,7 +54,7 @@ const UploadResumes = () => {
         try {
           const response = await resumeAPI.upload(fileObj.file, {
             full_name: candidateName || 'Unknown Candidate',
-            email: candidateEmail || '',
+            ...(candidateEmail ? { email: candidateEmail } : {}),
           });
 
           uploadedList.push({

@@ -5,7 +5,6 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
 import UploadResumes from './pages/UploadResumes';
-import CreateJob from './pages/CreateJob';
 import CandidateMatching from './pages/CandidateMatching';
 import CandidateList from './pages/CandidateList';
 import JobList from './pages/JobList';
@@ -78,10 +77,9 @@ function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/upload-resumes" element={<UploadResumes />} />
-              <Route path="/create-job" element={<CreateJob />} />
               <Route path="/candidates" element={<CandidateList />} />
               <Route path="/jobs" element={<JobList />} />
-              <Route path="/matching/:jobId" element={<CandidateMatching />} />
+              <Route path="/matching" element={<CandidateMatching />} />
               <Route path="/ranking/:rankingId" element={<RankingDetails />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

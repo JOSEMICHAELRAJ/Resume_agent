@@ -28,20 +28,25 @@ def create_candidate():
     """
     try:
         data = request.get_json()
+        email = data.get('email')
+        normalized_email = email.strip() if isinstance(email, str) else email
+        if not normalized_email:
+            normalized_email = None
         
         # Validate required fields
         if 'full_name' not in data:
             return jsonify({'error': 'full_name is required'}), 400
         
         # Check if candidate already exists
-        existing = Candidate.query.filter_by(email=data.get('email')).first()
-        if existing:
-            return jsonify({'error': 'Candidate with this email already exists'}), 409
+        if normalized_email:
+            existing = Candidate.query.filter_by(email=normalized_email).first()
+            if existing:
+                return jsonify({'error': 'Candidate with this email already exists'}), 409
         
         # Create candidate
         candidate = DatabaseManager.create_candidate(
             full_name=data['full_name'],
-            email=data.get('email'),
+            email=normalized_email,
             phone=data.get('phone'),
             location=data.get('location')
         )
